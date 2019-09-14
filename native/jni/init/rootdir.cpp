@@ -87,6 +87,9 @@ static void load_overlay_rc(int dirfd) {
 }
 
 void RootFSInit::setup_rootfs() {
+	// /sepolicy patch
+	chmod("/sepolicy", 0600);
+
 	if (patch_sepolicy()) {
 		char *addr;
 		size_t size;
